@@ -1,0 +1,24 @@
+<?php
+
+
+$data=$this->session->get('value');
+
+
+$image=$data['thumbnail_url'];
+$preview=$data['preview_url'];
+
+$new = str_replace("S", "L", $image);
+
+echo "<div class='card text-center mx-auto ' style='width: 28rem;'>
+  <img class='card-img-top' src='$new' alt='Card image cap'>
+  <div class='card-body'>
+  <h3>";
+  echo $data['details']['title'];
+  echo "<br>By:";
+  echo $data['details']['authors'][0]['name'];
+  echo "<br>Publish date:";
+  echo $data['details']['publish_date'];
+  echo"</h3>";
+  echo "<a href='$preview' class='btn btn-secondary btn-lg active' role='button' aria-pressed='true'>Preview</a>";
+ 
+echo "</div>";

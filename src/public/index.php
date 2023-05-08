@@ -7,6 +7,8 @@ use Phalcon\Mvc\Application;
 use Phalcon\Url;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Config;
+use Phalcon\Session\Manager;
+use Phalcon\Session\Adapter\Stream;
 
 $config = new Config([]);
 
@@ -46,6 +48,26 @@ $container->set(
     }
 );
 
+$container->set(
+    'session',
+    function () {
+        $session = new Manager();
+        $files = new Stream(
+            [
+                'savePath' => '/tmp',
+            ]
+        );
+
+        $session
+            ->setAdapter($files)
+            ->start();
+        return  $session;
+    }
+);
+
+
+
+
 $application = new Application($container);
 
 
@@ -59,9 +81,9 @@ $container->set(
                 'username' => 'root',
                 'password' => 'secret',
                 'dbname'   => 'phalt',
-                ]
-            );
-        }
+            ]
+        );
+    }
 );
 
 $container->set(

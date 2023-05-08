@@ -1,14 +1,12 @@
-<?php
-echo "<h1>Hello User Welcome</h1>";
-echo PHP_EOL;
-// link to signup page
-echo $this->tag->linkTo(
-    'signup',
-    'Sign Up Here!'
-);
-echo "<br>";
-// link to login page
-echo $this->tag->linkTo(
-    'login',
-    'Login In Here!'
-);
+<form method="POST" action="index/search">
+    <label class="form-label" for="form1"><b>Enter book name</b></label>
+    <div class="input-group d-flex p-2">
+
+        <input type="search" id="form1" name="book" class="form-control" />
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+        </button>
+
+    </div>
+</form>
